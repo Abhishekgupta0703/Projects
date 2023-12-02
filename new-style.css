@@ -39,14 +39,14 @@ body {
   text-align: center;
 }
 .gal-welcome h1 {
-  font-size: 5vw;
+  font-size: 4vw;
   position: relative;
   width: fit-content;
   margin: 5px auto;
 }
 .gal-welcome h1::before {
   content: "";
-  height: 0.95vw;
+  height: 0.9vw;
   width: 93%;
   position: absolute;
   background: #ff0000;
@@ -55,11 +55,11 @@ body {
 }
 
 .gal-welcome h2 {
-  font-size: 3.1vw;
+  font-size: 2.5vw;
   margin: 0 auto 15px;
 }
 .gal-welcome p {
-  font-size: 1.99vw;
+  font-size: 1.2vw;
   max-width: 840px;
   margin: auto;
   padding: 0 15px;
@@ -95,4 +95,13 @@ body {
   margin-left: auto;
 }
 @media (max-width: 850px) {
+  .gal-welcome h1 {
+    font-size: 5vw;
+  }
+  .gal-welcome h2 {
+    font-size: 3.1vw;
+  }
+  .gal-welcome p {
+    font-size: 2vw;
+  }
 }
