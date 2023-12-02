@@ -187,6 +187,7 @@ header .navbar ul li a:hover {
 }
 
 .welcome .heading1 {
+  text-align: center;
   cursor: pointer;
   margin: auto;
   font-size: 4.3rem;
@@ -307,6 +308,15 @@ header .navbar ul li a:hover {
   .welcome .content1 p {
     font-size: 1.6rem;
   }
+}
+.carousel-item {
+  height: 70vw;
+  position: relative;
+  object-fit: cover;
+}
+.carousel-item img {
+  height: 100%;
+  object-fit: fill;
 }
 
 :root {
