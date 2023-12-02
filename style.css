@@ -187,23 +187,34 @@ header .navbar ul li a:hover {
 }
 
 .welcome .heading1 {
+  cursor: pointer;
+  margin: auto;
   font-size: 4.3rem;
   color: #202020;
-  text-align: center;
   background: linear-gradient(to top, #f06 30%, #31013e 70%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
+  width: fit-content;
+  position: relative;
   transition: all 0.4s ease-in-out;
 }
 
-.welcome .heading1:hover {
-  text-shadow: 0 1px 0 #9e0000, 0 2px 0 #620303, 2px 3px 0 #b4b4b4,
-    0 4px 0 #afafaf, 1px 5px 0 #aaa, 6px 6px 5px #a5a5a5, 7px 7px 5px #a0a0a0,
-    0 4px 0 #9b9b9b, 0 9px 0 #969696, 0 1px 5px rgba(0, 0, 0, 0.05),
-    0 5px 5px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.15),
-    0 15px 10px rgba(0, 0, 0, 0.2), 0 20px 15px rgba(0, 0, 0, 0.25);
+.welcome .heading1::before {
+  content: "";
+  position: absolute;
+  top: 90%;
+  width: 100%;
+  height: 10px;
+  background: radial-gradient(#f06 30%, #31013e);
+  -webkit-text-fill-color: transparent;
+  transform: scaleX(0);
+  opacity: 0;
   transition: all 0.4s ease-in-out;
+}
+.welcome .heading1:hover::before {
+  transform: scaleX(100%);
+  opacity: 100%;
 }
 
 .welcome .heading2 {
@@ -256,18 +267,30 @@ header .navbar ul li a:hover {
 .welcome .round {
   margin: auto;
   width: 72%;
-  border-radius: 50%;
-  aspect-ratio: 1;
   object-fit: cover;
   outline: 1px solid white;
-  box-shadow: 1px 1px 15px #444;
   z-index: 1;
+  transition: border-radius 500ms ease;
+  animation: impo 7s infinite linear;
 }
 
-.welcome .round:hover {
-  box-shadow: -3px -1px 15px #444;
+@keyframes impo {
+  0% {
+    border-radius: 40% 60% 53% 47% / 62% 55% 45% 38%;
+  }
+  25% {
+    border-radius: 58% 42% 38% 62% / 37% 40% 60% 63%;
+  }
+  50% {
+    border-radius: 37% 63% 59% 41% / 65% 30% 70% 35%;
+  }
+  75% {
+    border-radius: 51% 49% 38% 62% / 28% 30% 70% 72%;
+  }
+  100% {
+    border-radius: 40% 60% 53% 47% / 62% 55% 45% 38%;
+  }
 }
-
 @media (max-width: 1000px) {
   .welcome .row .column {
     float: none;
@@ -426,7 +449,8 @@ header .navbar ul li a:hover {
   width: 65%;
   height: 90%;
   outline: 1px solid white;
-  box-shadow: 1px 1px 15px #444;
+  transition: border-radius 500ms ease;
+  animation: impo 7s infinite linear;
 }
 
 .blog .round:hover {
@@ -672,45 +696,54 @@ header .navbar ul li a:hover {
   margin-bottom: 15px;
 }
 
-.clients-section .client-block .mar {
-  margin: 1%;
-  background: #fff;
-}
-
-.clients-section .image-box {
+.slider {
+  height: 150px;
+  margin: 20px auto;
+  overflow: hidden;
   position: relative;
-  text-align: center;
-  box-shadow: none;
-  margin: auto auto;
-  /* -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease; */
-  transition: all 0.5s ease;
-}
-
-.clients-section .image-box img {
-  max-width: 45%;
   width: auto;
-  display: inline-block;
-  opacity: 0.9;
-  /* -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease; */
-  transition: all 0.3s ease;
+}
+.slider .slide-track {
+  display: flex;
+  align-items: center;
+  width: calc(250px * 28);
+  animation: scroll 30s linear infinite;
+  background: #ecfaff;
+}
+.slider .slide-track2 {
+  display: flex;
+  align-items: center;
+  width: calc(250px * 28);
+  animation: scroll2 35s linear infinite;
+}
+.slider .slide-track:hover,
+.slider .slide-track2:hover {
+  animation-play-state: paused;
 }
 
-.clients-section .mar:hover {
-  box-shadow: 0 0 15px rgba(5, 0, 97, 0.7);
-  border-radius: 10px;
-  scale: 1.05;
+.slider .slide {
+  width: 250px;
 }
-
-.clients-section .image-box:hover img {
-  opacity: 1;
+.slider .slide img {
+  aspect-ratio: 1;
+  width: 150px;
 }
-
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 14));
+  }
+}
+@keyframes scroll2 {
+  0% {
+    transform: translateX(calc(-250px * 14));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .gallery {
   position: relative;
   padding: 2% 3%;
@@ -734,10 +767,7 @@ header .navbar ul li a:hover {
   text-align: center;
   box-shadow: none;
   margin: auto auto;
-  /* -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease; */
+
   transition: all 0.5s ease;
 }
 
@@ -748,13 +778,27 @@ header .navbar ul li a:hover {
   opacity: 0.9;
   object-fit: cover;
   aspect-ratio: 1;
-  /* -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease; */
+
   transition: all 0.3s ease;
 }
-
+.show-more {
+  background: #000 !important;
+}
+.show-more img {
+  opacity: 0.5 !important;
+}
+.show-more a {
+  box-shadow: 2px 2px 5px #000;
+  text-decoration: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: large;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-radius: 30px;
+}
 .gallery .img-mar:hover {
   box-shadow: 0 0 10px rgba(5, 0, 97, 0.7);
   scale: 1.07;
