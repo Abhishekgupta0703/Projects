@@ -16,7 +16,7 @@ html {
 }
 
 body {
-  visibility: hidden;
+  display:none !important;
   background: #c8f3f0;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
